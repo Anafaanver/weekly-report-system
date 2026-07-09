@@ -7,9 +7,14 @@ import ManagerDashboard from "./pages/ManagerDashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import NotFound from "./pages/NotFound";
 
+import WeeklyReports from "./pages/WeeklyReports";
+import Projects from "./pages/Projects";
+
+
 function App() {
   return (
     <Routes>
+
       <Route path="/" element={<Navigate to="/login" />} />
 
       <Route path="/login" element={<Login />} />
@@ -34,7 +39,28 @@ function App() {
         }
       />
 
+      {/* Weekly Reports */}
+      <Route
+        path="/reports"
+        element={
+          <ProtectedRoute>
+            <WeeklyReports />
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Projects */}
+      <Route
+        path="/projects"
+        element={
+          <ProtectedRoute>
+            <Projects />
+          </ProtectedRoute>
+        }
+      />
+
       <Route path="*" element={<NotFound />} />
+
     </Routes>
   );
 }
